@@ -1,0 +1,22 @@
+{
+  "name": "geeksforgeeksjavascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saket23/geeksforgeeksJavascript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saket23/geeksforgeeksJavascript/issues"
+  },
+  "homepage": "https://github.com/Saket23/geeksforgeeksJavascript#readme",
+  "dependencies": {
+    "jest": "^25.2.4"
+  }
+}

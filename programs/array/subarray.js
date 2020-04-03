@@ -2,26 +2,23 @@
 //geeksforgeeks problem
 //https://practice.geeksforgeeks.org/problems/subarray-with-given-sum/
 
-function findContinuosSubArray(array, sum) {
-  let tempSum = 0;
-  let i = 0;
-
-  while (i <= array.length - 2) {
-    let j = i + 1;
-    tempSum = array[i];
-    while (j < array.length - 1) {
-      tempSum = tempSum + array[j];
-      if (tempSum === sum) {
-        return [i + 1, j + 1];
-      } else if (tempSum > sum) {
-        i++;
-        break;
-      } else {
-        j++;
-        continue;
-      }
+function findContinuousSubArray(array, sum) {
+  let currSum = 0;
+  let start = 0;
+  let returnValue = [];
+  for (let i = 0; i < array.length; i++) {
+    if (currSum < sum) {
+      currSum = currSum + array[i];
+    }
+    if (currSum > sum) {
+      currSum = currSum - array[start++];
+    }
+    if (currSum === sum) {
+      returnValue = [start + 1, i + 1];
+      break;
     }
   }
+  return returnValue;
 }
 
-module.exports = findContinuosSubArray;
+module.exports = findContinuousSubArray;

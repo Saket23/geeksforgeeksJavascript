@@ -25,4 +25,18 @@ function findContinuousSubArray(array, sum) {
   return returnValue;
 }
 
-module.exports = findContinuousSubArray;
+function findContinuousSubArrayForNegative(array, sum) {
+  let obj = {};
+  let currSum = 0;
+  for (let i = 0; i < array.length; i++) {
+    currSum = currSum + array[i];
+    obj[currSum] = i;
+    if (currSum === sum) {
+      return [0, i];
+    } else if (obj[currSum - sum]) {
+      return [obj[currSum - sum] + 1, i];
+    }
+  }
+}
+
+module.exports = { findContinuousSubArray, findContinuousSubArrayForNegative };

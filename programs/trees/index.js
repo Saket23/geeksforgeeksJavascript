@@ -1,10 +1,5 @@
-class Node {
-  constructor(value, left = null, right = null) {
-    this.left = left;
-    this.value = value;
-    this.right = right;
-  }
-}
+const Node = require("./Node");
+const Queue = require("./Queue");
 
 class BinaryTree {
   constructor(root) {
@@ -34,6 +29,35 @@ class BinaryTree {
       console.log(node.value);
     }
   }
+
+  //breadth first search
+  printLevelOrder(node) {
+    const queueObject = new Queue();
+    queueObject.add(node);
+    while (!queueObject.isEmpty()) {
+      let deletedNode = queueObject.delete();
+      console.log(deletedNode.value.value);
+      if (deletedNode.value.left !== null) {
+        queueObject.add(deletedNode.value.left);
+      }
+      if (deletedNode.value.right !== null) {
+        queueObject.add(deletedNode.value.right);
+      }
+    }
+  }
+
+  //height of binary tree
+  height(node) {
+    if (node === null) return 0;
+    let lDepth = this.height(node.left);
+    let rDepth = this.height(node.right);
+
+    if (lDepth > rDepth) {
+      return lDepth + 1;
+    } else {
+      return rDepth + 1;
+    }
+  }
 }
 
 let root = new Node(10);
@@ -57,3 +81,10 @@ tree.printPreOrder(root);
 
 console.log("post order");
 tree.printPostOrder(root);
+
+console.log("Height of the binary tree");
+const h = tree.height(root);
+console.log(h);
+
+console.log("Level order or breadth first");
+console.log(tree.printLevelOrder(root));

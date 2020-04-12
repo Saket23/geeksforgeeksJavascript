@@ -39,6 +39,16 @@ class Queue {
     return temp;
   }
 
+  getSize() {
+    let temp = this.front;
+    let counter = 0;
+    while (temp !== null) {
+      counter++;
+      temp = temp.next;
+    }
+    return counter;
+  }
+
   print() {
     let node = this.front;
     while (node !== null) {

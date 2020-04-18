@@ -10,7 +10,10 @@ function swap(string, i, j) {
 
 function permute(str, l, r, allStrings) {
   if (l === r) {
-    allStrings.push(str);
+    //condition to handle duplicate if same strings are present
+    if (!allStrings.some(s => s === str)) {
+      allStrings.push(str);
+    }
   } else {
     for (let i = l; i <= r; i++) {
       str = swap(str, l, i);
@@ -26,4 +29,4 @@ function stringPermutations(str) {
   return allStrings;
 }
 
-console.log(stringPermutations("ABCD"));
+console.log(stringPermutations("ABCC"));
